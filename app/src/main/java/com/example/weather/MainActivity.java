@@ -84,8 +84,9 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject jsonObject = new JSONObject(s);
                 String city = jsonObject.getString("name");
                 String temp = jsonObject.getJSONObject("main").getString("temp");
+                int tempCorrect = (int) (Math.round(Float.parseFloat(temp))); // Переменна в которой округляем погоду.
                 String description = jsonObject.getJSONArray("weather").getJSONObject(0).getString("description");
-                String weather = String.format("%s\nТемпература: %s\nНа улице: %s", city, temp, description);
+                String weather = String.format("%s\nТемпература: %s\nНа улице: %s", city, tempCorrect, description);
                 textViewShowInfoOfWeather.setText(weather);
             } catch (JSONException e) {
                 e.printStackTrace();
